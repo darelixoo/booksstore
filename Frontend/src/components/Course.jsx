@@ -11,9 +11,10 @@ function Course() {
     const getBook = async () => {
       try {
         const res = await axios.get("http://localhost:4001/book");
-        const data = res.data.filter((data) => data.category === "Paid");
+        
+        const Data = res.data.filter((data) => data.category === "Paid");
         console.log(res.data);
-        setBook(res.data);
+        setBook(Data);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError("Failed to fetch books. Please try again later.");
