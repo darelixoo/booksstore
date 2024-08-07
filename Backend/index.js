@@ -9,7 +9,7 @@ import userRoute from "./route/user.route.js";
 const app = express();
 
 app.use(cors({
-    origin: 'https://booksstore-frontend-5azoekj3l-mayank-singhs-projects-980d9178.vercel.app' // Replace with your frontend URL
+    origin: 'https://booksstore-frontend.vercel.app/' // Replace with your frontend URL
   }));
 app.use(express.json());
 
