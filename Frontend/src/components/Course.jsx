@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import BASE_URL from "../App.jsx";
 
 function Course() {
   const [book, setBook] = useState([]);
@@ -10,7 +11,7 @@ function Course() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/book");
+        const res = await axios.get(`${BASE_URL}/book`);
         
         const Data = res.data.filter((data) => data.category === "Paid");
         console.log(res.data);
