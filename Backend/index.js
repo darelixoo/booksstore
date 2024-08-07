@@ -8,9 +8,26 @@ import userRoute from "./route/user.route.js";
 
 const app = express();
 
-app.use(cors({
-    origin: 'https://booksstore-frontend.vercel.app/' // Replace with your frontend URL
+
+const allowedOrigins = [
+    'http://localhost:5173', // Add your frontend development URL
+    'https://booksstore-frontend.vercel.app/' // Add your deployed frontend URL
+  ];
+  
+  app.use(cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = `The CORS policy for this site does not allow access from the specified origin: ${origin}`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   }));
+
+
 app.use(express.json());
 
 dotenv.config();
