@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import BASE_URL from "../App.jsx";
+
+
 
 function Course() {
+  //const BASE_URL=process.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const [book, setBook] = useState([]);
   const [error, setError] = useState(null);
 

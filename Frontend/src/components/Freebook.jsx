@@ -5,10 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import axios from "axios";
-import BASE_URL from "../App.jsx";
+
 
 import Cards from "./Cards";
 function Freebook() {
+  //c//onst BASE_URL=process.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [book, setBook] = useState([]);
   useEffect(() => {
     const getBook = async () => {

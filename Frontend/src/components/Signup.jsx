@@ -4,8 +4,10 @@ import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
-import BASE_URL from "../App.jsx"
+
 function Signup() {
+  //const BASE_URL=process.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -27,13 +29,16 @@ function Signup() {
       .then((res) => {
         console.log(res.data);
         if (res.data) {
+          console.log(BASE_URL);
           toast.success("Signup Successfully");
           navigate(from, { replace: true });
+
         }
         localStorage.setItem("Users", JSON.stringify(res.data.user));
       })
       .catch((err) => {
         if (err.response) {
+          console.log(BASE_URL);
           console.log(err);
           toast.error("Error: " + err.response.data.message);
         }
