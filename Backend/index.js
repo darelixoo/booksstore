@@ -14,18 +14,12 @@ const allowedOrigins = [
     'https://booksstore-frontend.vercel.app/' // Add your deployed frontend URL
   ];
   
+
   app.use(cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        const msg = `The CORS policy for this site does not allow access from the specified origin: ${origin}`;
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    },
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-  }));
+    origin: 'https://booksstore-frontend.vercel.app',  // Replace with your frontend URL
+    methods: 'GET,POST,PUT,DELETE',  // Specify allowed methods
+    credentials: true  // If you need to allow credentials (cookies, HTTP authentication)
+}));
 
 
 app.use(express.json());
