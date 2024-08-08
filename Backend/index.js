@@ -1,7 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import cors from "cors";
+//import cors from "cors";
+const cors = require('cors');
 
 import bookRoute from "./route/book.route.js";
 import userRoute from "./route/user.route.js";
@@ -9,13 +10,9 @@ import userRoute from "./route/user.route.js";
 const app = express();
 
 
-const allowedOrigins = [
-    'http://localhost:5173', // Add your frontend development URL
-    'https://booksstore-frontend.vercel.app/' // Add your deployed frontend URL
-  ];
-  
+ 
 
-  app.use(cors({
+app.use(cors({
     origin: 'https://booksstore-frontend.vercel.app',  // Replace with your frontend URL
     methods: 'GET,POST,PUT,DELETE',  // Specify allowed methods
     credentials: true  // If you need to allow credentials (cookies, HTTP authentication)
